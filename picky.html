@@ -11,7 +11,7 @@
     <title>Narrow Jumbotron Template for Bootstrap</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="jumbotron-narrow.css" rel="stylesheet">
@@ -30,9 +30,60 @@
     <div class="container">
       <div class="jumbotron">
         <h1><a href="/index.html">eat2day</a></h1>
-        <h4>so picky</h4>
-        <h4> dropdowns here </h4>
-      </div>
+        <h4>(so picky...)</h4>
+         
+          <div ID="restList">
+              <div>
+                <p>
+                    <a>Restaurant #1</a>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="option1">
+                    </label>
+                </p>
+              </div>
+          
+              <div>
+                <p>
+                    <a>Restaurant #2</a>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="option2">
+                    </label>
+                </p>
+              </div>
+
+              <div>
+                  <p>
+                    <a>Restaurant #3</a>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="option3">
+                    </label>
+                  </p>
+              </div>
+              
+          </div> <!--end of restaurant list-->
+          
+          <div ID="customChoice">
+            <form class="form-inline" role="form">
+                
+              <div class="form-group">
+                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Custom cuisine">
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox">
+                </label>
+              </div>
+                
+            </form>
+          </div> <!--end of customChoice-->
+          
+          <div>
+            <button type="button" class="btn btn-success">find!</button>
+          </div>
+          
+      </div> <!--end "jumbotron" class ... they gray box-->
         
       <div class="footer">
         <p>&rArr; 2014</p>

@@ -11,7 +11,7 @@
     <title>Narrow Jumbotron Template for Bootstrap</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="jumbotron-narrow.css" rel="stylesheet">
@@ -23,16 +23,72 @@
         border: none;
     }
     </style>
+      
+    <script type="text/javascript" src="jav.js"></script>
+      
+    <script>
+<!---->
+function getUserLocation() { 
+
+//check if the geolocation object is supported, if so get position
+if (navigator.geolocation)
+	navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+else
+	document.getElementById("locationData").innerHTML = "Sorry - your browser doesn't support geolocation!";
+}
+
+function displayLocation(position) { 
+
+//build text string including co-ordinate data passed in parameter
+var displayText = "User latitude is " + position.coords.latitude + " and longitude is " + position.coords.longitude;
+
+//display the string for demonstration
+document.getElementById("locationData").innerHTML = displayText;
+}
+
+function displayError(error) { 
+
+//get a reference to the HTML element for writing result
+var locationElement = document.getElementById("locationData");
+
+//find out which error we have, output message accordingly
+switch(error.code) {
+case error.PERMISSION_DENIED:
+	locationElement.innerHTML = "Permission was denied";
+	break;
+case error.POSITION_UNAVAILABLE:
+	locationElement.innerHTML = "Location data not available";
+	break;
+case error.TIMEOUT:
+	locationElement.innerHTML = "Location request timeout";
+	break;
+case error.UNKNOWN_ERROR:
+	locationElement.innerHTML = "An unspecified error occurred";
+	break;
+default:
+	locationElement.innerHTML = "Who knows what happened...";
+	break;
+}}
+<!---->
+    </script>
+      
   </head>
 
   <body>
-
+      
+<!---->
+      <input type="button" value="get location" onclick="getUserLocation()"/>
+<div id="locationData">
+Location data here
+</div>
+<!---->
+      
     <div class="container">
       <div class="jumbotron">
         <h1><a href="">eat2day</a></h1>
         <h4>well, how do you feel 2day?</h4>
         <p>
-            <a href="/result.html" class="btn btn btn-info btn-sm">lucky</a> <a href="/picky.html" class="btn btn btn-info btn-sm">picky</a>
+            <a href="result.html" class="btn btn btn-info btn-sm">lucky</a> <a href="picky.html" class="btn btn btn-info btn-sm">picky</a>
         </p>
       </div>
 
