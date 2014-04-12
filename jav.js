@@ -45,10 +45,10 @@ function displayError(error) {
 function getUserLocation() {
     "use strict";   //dumb complaint
 
-//check if the geolocation object is supported, if so get position
-    if (navigator.geolocation)
+    //check if the geolocation object is supported, if so get position
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(displayLocation, displayError);
-    else
+    } else {
         document.getElementById("locationData").innerHTML = "Sorry - your browser doesn't support geolocation!";
     }
-
+}
