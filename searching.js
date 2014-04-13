@@ -57,6 +57,8 @@ function getUserLocation() {
     } else {
         window.alert("Sorry - your browser doesn't support geolocation!");
     }
+    
+    
 }
 
 
