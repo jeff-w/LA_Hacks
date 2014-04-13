@@ -10,36 +10,36 @@ var longitude;
 function displayLocation(position) {
     "use strict";
     //build text string including co-ordinate data passed in parameter
-    var displayText = "User latitude is " + position.coords.latitude + " and longitude is " + position.coords.longitude;
+    //var displayText = "User latitude is " + position.coords.latitude + " and longitude is " + position.coords.longitude;
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
 
     //display the string for demonstration
-    document.getElementById("locationData").innerHTML = "lat is " + latitude + ", long is " + longitude;
+    //document.getElementById("locationData").innerHTML = "lat is " + latitude + ", long is " + longitude;
 }
 
 
 function displayError(error) {
     "use strict";
     //get a reference to the HTML element for writing result
-    var locationElement = document.getElementById("locationData");
+    //var locationElement = document.getElementById("locationData");
 
     //find out which error we have, output message accordingly
     switch (error.code) {
     case error.PERMISSION_DENIED:
-        locationElement.innerHTML = "Permission was denied";
+        window.alert("Permission was denied");
         break;
     case error.POSITION_UNAVAILABLE:
-        locationElement.innerHTML = "Location data not available";
+        window.alert("Location data not available");
         break;
     case error.TIMEOUT:
-        locationElement.innerHTML = "Location request timeout";
+        window.alert("Location request timeout");
         break;
     case error.UNKNOWN_ERROR:
-        locationElement.innerHTML = "An unspecified error occurred";
+        window.alert("An unspecified error occurred");
         break;
     default:
-        locationElement.innerHTML = "Who knows what happened...";
+        window.alert("Who knows what happened...");
         break;
     }
 }
@@ -54,7 +54,7 @@ function getUserLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(displayLocation, displayError);
     } else {
-        document.getElementById("locationData").innerHTML = "Sorry - your browser doesn't support geolocation!";
+        window.alert("Sorry - your browser doesn't support geolocation!");
     }
 }
 
