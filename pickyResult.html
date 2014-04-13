@@ -63,8 +63,13 @@
         parameters.push(['oauth_token', auth.accessToken]);
         parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
 
+        params = parent.document.URL.substring(parent.document.URL.indexOf('?') + 7, parent.document.URL.length); //data past the =
+        //params = window.localStorage.getItem("id");
+        //var params=localStorage.getItem("id");
+        alert(params);
+        
         var message = { 
-          'action': 'http://api.yelp.com/v2/search?term=food&ll=34.0716,-118.4504',
+          'action': 'http://api.yelp.com/v2/search?term=food&ll=34.0716,-118.4504' + params,
           'method': 'GET',
           'parameters': parameters 
         };
