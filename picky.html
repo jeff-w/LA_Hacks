@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>eat.rand()</title>
+    <title>Narrow Jumbotron Template for Bootstrap</title>
     <script type="text/javascript" src="searching.js"></script>
     
     <!-- Bootstrap core CSS -->
@@ -33,36 +33,7 @@
         <h1><a href="/index.html">eat2day</a></h1>
         <h4>(so picky...)</h4>
          
-          <div ID="restList">
-              <div>
-                <p>
-                    <a>Restaurant #1</a>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" value="option1">
-                    </label>
-                </p>
-              </div>
-          
-              <div>
-                <p>
-                    <a>Restaurant #2</a>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" value="option2">
-                    </label>
-                </p>
-              </div>
-
-              <div>
-                  <p>
-                    <a>Restaurant #3</a>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" value="option3">
-                    </label>
-                  </p>
-              </div>
-              
-          </div> <!--end of restaurant list-->
-          
+          <!--
           <div ID="customChoice">
             <form class="form-inline" role="form">
                 
@@ -78,17 +49,50 @@
               </div>
                 
             </form>
-          </div> <!--end of customChoice-->
+          </div> -->
+<!--end of customChoice-->
           
-          <div>
-            <button type="button" class="btn btn-success">find!</button>
-          </div>
-          
+    <h5>      
+      <label type="checkbox" value="">
+        <input type="checkbox" value="op1"> American
+      </label><br>
+      <label type="checkbox-inline" value="">
+        <input type="checkbox" value="op2"> Eastern Asian
+      </label><br>
+      <label type="checkbox-inline" value="">
+        <input type="checkbox" value="op3"> Rest of Asian
+      </label><br>
+      <label type="checkbox-inline" value="">
+        <input type="checkbox" value="op4"> Middle Eastern
+      </label><br>
+      <label type="checkbox-inline" value="">
+        <input type="checkbox" value="op5"> South American
+      </label><br>
+      <label type="checkbox-inline" value="">
+        <input type="checkbox" value="op6"> European
+      </label><br>
+    </h5>
+          <a href="result.html"><button type = "button" class="btn btn-success">pick</button></a>
       </div> <!--end "jumbotron" class ... they gray box-->
         
       <div class="footer">
-        <p>&rArr; 2014</p>
+        <p><center>LAHacks 2014</center></p>
       </div>
+      <script>
+          var str = '&category_filter=';
+          if(document.getElementById("op1").checked)
+              str = str + "newamerican,tradamerican,";
+          if(document.getElementById("op2").checked)
+              str = str + "chinese,cantonese,dimsum,shanghainese,szechuan,japanese,korean,taiwanese,";
+          if(document.getElementById("op3").checked)
+              str = str + "indpak,afghani,mongolian,cambodian,indonesian,laotian,malaysian,singaporean,filipino,thai,vienamese,";
+          if(document.getElementById("op4").checked) 
+              str = str + "mideastern,persian,turkish,arabian,egyptian,lebanese,";
+          if(document.getElementById("op5").checked)
+              str = str + "slovakian,polish,hungarian,german,austrian,czech,moderm_european,ukrainian,irish,british,scandinavian,scottish,mediterranean,greek,turkish,italian,portuguese,spanish,";
+          if(document.getElementById("op6").checked)  
+              str = str + "mexican,caribbean,dominican,haitian,puertorican,trinidadian,latin,colombian,salvadoran,venezuelan,";
+      </script>
 
     </div> 
   </body>

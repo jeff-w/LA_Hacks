@@ -31,15 +31,107 @@
      <script>
          getUserLocation();
      </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+    <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+    <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
+    <script type="text/javascript" src="https://rawgithub.com/padolsey/prettyPrint.js/master/prettyprint.js"></script>
+    <script type="text/javascript">
+        var auth = { 
+          //
+          // Update with your auth tokens
+          //
+          consumerKey: "5a1VTjzrmxoL0XqV-Oix-Q", 
+          consumerSecret: "JnV9pT9i2jbtsXSvOHGAin26g5w",
+          accessToken: "7NnijiyMMc1X2nDOB673XVYTcUTzfvPi",
+          // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+          // You wouldn't actually want to expose your access token secret like this in a real application.
+          accessTokenSecret: "ysz8RUYz8iPZLlOkg_rsEqN1wjY",
+          serviceProvider: {
+            signatureMethod: "HMAC-SHA1"
+          }
+        };
+
+        var accessor = {
+          consumerSecret: auth.consumerSecret,
+          tokenSecret: auth.accessTokenSecret
+        };
+
+        parameters = [];
+        parameters.push(['callback', 'cb']);
+        parameters.push(['oauth_consumer_key', auth.consumerKey]);
+        parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+        parameters.push(['oauth_token', auth.accessToken]);
+        parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+
+        var message = { 
+          'action': 'http://api.yelp.com/v2/search?term=food&ll=34.0716,-118.4504',
+          'method': 'GET',
+          'parameters': parameters 
+        };
+
+
+        OAuth.setTimestampAndNonce(message);
+        OAuth.SignatureMethod.sign(message, accessor);
+
+        var parameterMap = OAuth.getParameterMap(message.parameters);
+        parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
+        console.log(parameterMap);
+
+        var x = Math.floor((Math.random()*19));
+        var theRest;
+        
+        $.ajax({
+          'url': message.action,
+          'data': parameterMap,
+          'cache': true,
+          'dataType': 'jsonp',
+          'jsonpCallback': 'cb',
+          'success': function(data, textStats, XMLHttpRequest) {
+            var out = (data.businesses[0].name);
+              //$("body").append(out);
+            console.log(data);
+            var output = prettyPrint(data);
+            //$("body").append(output);
+            theRest = (data.businesses[x]);
+              
+            window.onload = function() {
+                   //when the document is finished loading, replace everything
+                   //between the <a ...> </a> tags with the value of splitText
+                document.getElementById("first").innerHTML=theRest.name;
+                document.getElementById("third").innerHTML="Phone: " + theRest.display_phone;
+                document.getElementById("second").innerHTML="Cuisine: " + theRest.categories[0][0];
+                var m = theRest.distance / 0.67056;
+                m = Math.round(m/10);
+                //document.getElementById("fourth").innerHTML="Delivery Time Estimate: " + Math.floor(m) + " min";
+                var temp = Math.floor((Math.random()*10) + 20);
+                document.getElementById("fourth").innerHTML="Delivery Time Estimate: " + temp + " min";
+                document.getElementById("fh").innerHTML="Distance: " + m/100 + " km";
+                document.getElementById("fifth").innerHTML="Rating: " + theRest.rating + " / 5";
+                document.getElementById("six").innerHTML=theRest.review_count + " customer reviews";
+            } 
+          }
+        });
+        
+        
+        </script> <!--end searching script-->
 
     <div class="container">
       <div class="jumbotron">
-        <h1><a href="/index.html">eat2day</a></h1>
-        <h4>name of shop</h4>
-        <h4>information</h4>
+          
+        <h2 id="first"></h2>
+        <h4 id="second"></h4>          
+          <h4 id="third"></h4>
+          <br>
+          <h4 id="fourth"></h4>
+          <h4 id="fh"></h4>
+          <br>
+          <h4 id="fifth"></h4>
+          <h4 id="six"></h4>
+          <br>
+            <a href="result.html?param=" class="btn btn btn-info btn-sm">again?</a> <a href="picky.html" class="btn btn btn-info btn-sm">picky</a>
       </div>
       <div class="footer">
-        <p>&rArr; 2014</p>
+        <p><center>LAHacks 2014</center></p>
       </div>
 
     </div> 
