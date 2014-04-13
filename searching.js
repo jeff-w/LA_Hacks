@@ -28,6 +28,8 @@ parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
 parameters.push(['oauth_token', auth.accessToken]);
 parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
 
+var theLat = jav.js
+
 var message = { 
   'action': 'http://api.yelp.com/v2/search?term=food&ll=37.788022,-122.399797',
   'method': 'GET',
