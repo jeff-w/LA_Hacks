@@ -19,10 +19,13 @@ LUCKY: gets random restaurant (+ info) in your area
 
 PICKY: random restaurant by cuisine
 
-
-
 built using Yelp API
 
+
+Bugs
+========
 Not finished
+
 only works in LA
+
 checkbox filtering for "picky" option not fully functional
